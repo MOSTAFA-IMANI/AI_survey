@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>فرم کارگاه هوش مصنوعی</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" />
+  <style>
+    body { font-family: 'Vazirmatn', sans-serif; background-color: #f9f9f9; }
+    .container { max-width: 800px; margin-top: 30px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h4 class="text-center mb-4">فرم ثبت‌نام کارگاه هوش مصنوعی</h4>
+    <form>
+
+      <!-- پاسخ باز -->
+      <div class="mb-3">
+        <label class="form-label">نام و نام خانوادگی شما چیست؟</label>
+        <input type="text" class="form-control" required />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">ایمیل سازمانی یا شخصی شما چیست؟</label>
+        <input type="email" class="form-control" required />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">عنوان شغلی یا سمت فعلی شما چیست؟</label>
+        <input type="text" class="form-control" />
+      </div>
+
+      <!-- تک‌گزینه‌ای: واحد سازمانی -->
+      <div class="mb-3">
+        <label class="form-label">در کدام واحد سازمانی فعالیت می‌کنید؟</label>
+        <select class="form-select" required>
+          <option selected disabled>انتخاب کنید</option>
+          <option>عملیات</option>
+          <option>تولید</option>
+          <option>تحقیق و توسعه</option>
+          <option>تضمین کیفیت</option>
+          <option>ایمنی و بهداشت</option>
+          <option>زنجیره تأمین</option>
+          <option>سایر</option>
+        </select>
+      </div>
+
+      <!-- ساعات استفاده از کامپیوتر -->
+      <div class="mb-3">
+        <label class="form-label">به‌طور میانگین در روز چند ساعت از کامپیوتر استفاده می‌کنید؟</label>
+        <select class="form-select">
+          <option>کمتر از ۱ ساعت</option>
+          <option>۱–۳ ساعت</option>
+          <option>۴–۶ ساعت</option>
+          <option>بیش از ۶ ساعت</option>
+        </select>
+      </div>
+
+      <!-- ساعات استفاده از اینترنت -->
+      <div class="mb-3">
+        <label class="form-label">به‌طور میانگین در روز چند ساعت از اینترنت استفاده می‌کنید؟</label>
+        <select class="form-select">
+          <option>کمتر از ۱ ساعت</option>
+          <option>۱–۳ ساعت</option>
+          <option>۴–۶ ساعت</option>
+          <option>بیش از ۶ ساعت</option>
+        </select>
+      </div>
+
+      <!-- چندگزینه‌ای: ابزارها -->
+      <div class="mb-3">
+        <label class="form-label">با کدام‌یک از ابزارهای زیر کار کرده‌اید؟</label>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> ChatGPT</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> Google Sheets</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> Gemini</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> Google Calendar</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> Copilot</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> Notion AI</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> Bing AI</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> n8n</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> Claude</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> Grammarly</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> NotebookLM</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> Midjourney</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> Whisper</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> DALL·E</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> Deepseek</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> RunwayML</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> هیچ‌کدام</div>
+      </div>
+
+      <!-- پاسخ باز -->
+      <div class="mb-3">
+        <label class="form-label">وقت‌گیرترین یا تکراری‌ترین کارهای شما در حال حاضر چیست؟</label>
+        <textarea class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">دوست دارید از این کارگاه چه چیزی یاد بگیرید؟</label>
+        <textarea class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">به نظر شما هوش مصنوعی چیست؟</label>
+        <textarea class="form-control" rows="3"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">در واحد یا حوزه کاری شما چه مسئله یا چالشی وجود دارد که تصور می‌کنید هوش مصنوعی می‌تواند به حل آن کمک کند؟</label>
+        <textarea class="form-control" rows="3"></textarea>
+      </div>
+
+      <!-- از 1 تا 10 -->
+      <div class="mb-3">
+        <label class="form-label">از یک تا ده، چقدر فکر می‌کنید هوش مصنوعی در آینده‌ی شغلی و سازمانی شما تاثیرگذار خواهد بود؟</label>
+        <input type="number" class="form-control" min="1" max="10" />
+      </div>
+
+      <!-- نوع محتوا -->
+      <div class="mb-3">
+        <label class="form-label">ترجیح می‌دهید در طول دوره بیشتر با کدام نوع محتوا آشنا شوید؟</label>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> مثال‌های واقعی از ایران</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> کیس‌های بین‌المللی موفق</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> ابزارهای کاربردی و دم‌دستی</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> مفاهیم و ترندها</div>
+        <div class="form-check"><input class="form-check-input" type="checkbox"> همه موارد</div>
+      </div>
+
+      <!-- دغدغه ذهنی -->
+      <div class="mb-3">
+        <label class="form-label">آیا سوال یا دغدغه‌ای در ذهن دارید که دوست دارید در کلاس پاسخ داده شود؟</label>
+        <textarea class="form-control" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 mt-3">ثبت</button>
+    </form>
+  </div>
+</body>
+</html>
