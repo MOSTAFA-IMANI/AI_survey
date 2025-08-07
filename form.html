@@ -12,182 +12,203 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <h4 class="text-center mb-4">فرم ثبت‌نام کارگاه هوش مصنوعی</h4>
-    <form id="ai-form" action="https://n8n.rymon-afzar.ir/webhook-test/e3905b74-63ec-4a66-bbbb-a9cca2864538" method="POST">
+<div class="container">
+  <h4 class="text-center mb-4">فرم ثبت‌نام کارگاه هوش مصنوعی</h4>
+  <form id="ai-form" action="https://n8n.rymon-afzar.ir/webhook-test/e3905b74-63ec-4a66-bbbb-a9cca2864538" method="POST">
 
+    <!-- پاسخ باز -->
+    <div class="mb-3">
+      <label class="form-label">نام و نام خانوادگی شما چیست؟</label>
+      <input type="text" class="form-control" required />
+    </div>
 
-      <!-- پاسخ باز -->
-      <div class="mb-3">
-        <label class="form-label">نام و نام خانوادگی شما چیست؟</label>
-        <input type="text" class="form-control" required />
-      </div>
+    <div class="mb-3">
+      <label class="form-label">ایمیل سازمانی یا شخصی شما چیست؟</label>
+      <input type="email" class="form-control" required />
+    </div>
 
-      <div class="mb-3">
-        <label class="form-label">ایمیل سازمانی یا شخصی شما چیست؟</label>
-        <input type="email" class="form-control" required />
-      </div>
+    <div class="mb-3">
+      <label class="form-label">عنوان شغلی یا سمت فعلی شما چیست؟</label>
+      <input type="text" class="form-control" />
+    </div>
 
-      <div class="mb-3">
-        <label class="form-label">عنوان شغلی یا سمت فعلی شما چیست؟</label>
-        <input type="text" class="form-control" />
-      </div>
+    <!-- تک‌گزینه‌ای: واحد سازمانی -->
+    <div class="mb-3">
+      <label class="form-label">در کدام واحد سازمانی فعالیت می‌کنید؟</label>
+      <select class="form-select" required>
+        <option selected disabled>انتخاب کنید</option>
+        <option>عملیات</option>
+        <option>تولید</option>
+        <option>تحقیق و توسعه</option>
+        <option>تضمین کیفیت</option>
+        <option>ایمنی و بهداشت</option>
+        <option>زنجیره تأمین</option>
+        <option>مارکتینک</option>
+        <option>فروش</option>
+        <option>سیستم ها و روش ها</option>
+        <option>آی تی</option>
+        <option>توسعه کسب و کار</option>
+        <option>مالی</option>
+        <option>حسابرسی</option>
+        <option>حقوقی</option>
+        <option>سایر</option>
+      </select>
+    </div>
 
-      <!-- تک‌گزینه‌ای: واحد سازمانی -->
-      <div class="mb-3">
-        <label class="form-label">در کدام واحد سازمانی فعالیت می‌کنید؟</label>
-        <select class="form-select" required>
-          <option selected disabled>انتخاب کنید</option>
-          <option>عملیات</option>
-          <option>تولید</option>
-          <option>تحقیق و توسعه</option>
-          <option>تضمین کیفیت</option>
-          <option>ایمنی و بهداشت</option>
-          <option>زنجیره تأمین</option>
-          <option>مارکتینک</option>
-          <option>فروش</option>
-          <option>سیستم ها و روش ها</option>
-          <option>آی تی</option>
-          <option>توسعه کسب و کار</option>
-          <option>مالی</option>
-          <option>حسابرسی</option>
-          <option>حقوقی</option>
-          <option>سایر</option>
-        </select>
-      </div>
+    <!-- ساعات استفاده از کامپیوتر -->
+    <div class="mb-3">
+      <label class="form-label">به‌طور میانگین در روز چند ساعت از کامپیوتر استفاده می‌کنید؟</label>
+      <select class="form-select">
+        <option>کمتر از ۱ ساعت</option>
+        <option>۱–۳ ساعت</option>
+        <option>۴–۶ ساعت</option>
+        <option>بیش از ۶ ساعت</option>
+      </select>
+    </div>
 
-      <!-- ساعات استفاده از کامپیوتر -->
-      <div class="mb-3">
-        <label class="form-label">به‌طور میانگین در روز چند ساعت از کامپیوتر استفاده می‌کنید؟</label>
-        <select class="form-select">
-          <option>کمتر از ۱ ساعت</option>
-          <option>۱–۳ ساعت</option>
-          <option>۴–۶ ساعت</option>
-          <option>بیش از ۶ ساعت</option>
-        </select>
-      </div>
+    <!-- ساعات استفاده از اینترنت -->
+    <div class="mb-3">
+      <label class="form-label">به‌طور میانگین در روز چند ساعت از اینترنت استفاده می‌کنید؟</label>
+      <select class="form-select">
+        <option>کمتر از ۱ ساعت</option>
+        <option>۱–۳ ساعت</option>
+        <option>۴–۶ ساعت</option>
+        <option>بیش از ۶ ساعت</option>
+      </select>
+    </div>
 
-      <!-- ساعات استفاده از اینترنت -->
-      <div class="mb-3">
-        <label class="form-label">به‌طور میانگین در روز چند ساعت از اینترنت استفاده می‌کنید؟</label>
-        <select class="form-select">
-          <option>کمتر از ۱ ساعت</option>
-          <option>۱–۳ ساعت</option>
-          <option>۴–۶ ساعت</option>
-          <option>بیش از ۶ ساعت</option>
-        </select>
-      </div>
+    <!-- چندگزینه‌ای: ابزارها -->
+    <div class="mb-3">
+      <label class="form-label">با کدام‌یک از ابزارهای زیر کار کرده‌اید؟</label>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> ChatGPT</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> Google Sheets</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> Gemini</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> Google Calendar</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> Copilot</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> Notion AI</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> Bing AI</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> n8n</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> Claude</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> Grammarly</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> NotebookLM</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> Midjourney</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> Whisper</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> DALL·E</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> Deepseek</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> RunwayML</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> هیچ‌کدام</div>
+    </div>
 
-      <!-- چندگزینه‌ای: ابزارها -->
-      <div class="mb-3">
-        <label class="form-label">با کدام‌یک از ابزارهای زیر کار کرده‌اید؟</label>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> ChatGPT</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> Google Sheets</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> Gemini</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> Google Calendar</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> Copilot</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> Notion AI</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> Bing AI</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> n8n</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> Claude</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> Grammarly</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> NotebookLM</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> Midjourney</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> Whisper</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> DALL·E</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> Deepseek</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> RunwayML</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> هیچ‌کدام</div>
-      </div>
+    <!-- پاسخ باز -->
+    <div class="mb-3">
+      <label class="form-label">وقت‌گیرترین یا تکراری‌ترین کارهای شما در حال حاضر چیست؟</label>
+      <textarea class="form-control" rows="3"></textarea>
+    </div>
 
-      <!-- پاسخ باز -->
-      <div class="mb-3">
-        <label class="form-label">وقت‌گیرترین یا تکراری‌ترین کارهای شما در حال حاضر چیست؟</label>
-        <textarea class="form-control" rows="3"></textarea>
-      </div>
+    <div class="mb-3">
+      <label class="form-label">دوست دارید از این کارگاه چه چیزی یاد بگیرید؟</label>
+      <textarea class="form-control" rows="3"></textarea>
+    </div>
 
-      <div class="mb-3">
-        <label class="form-label">دوست دارید از این کارگاه چه چیزی یاد بگیرید؟</label>
-        <textarea class="form-control" rows="3"></textarea>
-      </div>
+    <div class="mb-3">
+      <label class="form-label">به نظر شما هوش مصنوعی چیست؟</label>
+      <textarea class="form-control" rows="3"></textarea>
+    </div>
 
-      <div class="mb-3">
-        <label class="form-label">به نظر شما هوش مصنوعی چیست؟</label>
-        <textarea class="form-control" rows="3"></textarea>
-      </div>
+    <div class="mb-3">
+      <label class="form-label">در واحد یا حوزه کاری شما چه مسئله یا چالشی وجود دارد که تصور می‌کنید هوش مصنوعی می‌تواند به حل آن کمک کند؟</label>
+      <textarea class="form-control" rows="3"></textarea>
+    </div>
 
-      <div class="mb-3">
-        <label class="form-label">در واحد یا حوزه کاری شما چه مسئله یا چالشی وجود دارد که تصور می‌کنید هوش مصنوعی می‌تواند به حل آن کمک کند؟</label>
-        <textarea class="form-control" rows="3"></textarea>
-      </div>
+    <!-- سطح زبان انگلیسی -->
+    <div class="mb-3">
+      <label class="form-label">سطح زبان انگلیسی چطور است؟ <span id="english-value">3</span></label>
+      <input type="range" class="form-range" min="1" max="5" value="3" id="english-slider">
+    </div>
 
-      <!-- از 1 تا 10 -->
-      <div class="mb-3">
-        <label class="form-label">از یک تا ده، چقدر فکر می‌کنید هوش مصنوعی در آینده‌ی شغلی و سازمانی شما تاثیرگذار خواهد بود؟</label>
-        <input type="number" class="form-control" min="1" max="10" />
-      </div>
+    <!-- تاثیر هوش مصنوعی -->
+    <div class="mb-3">
+      <label class="form-label">از ۱ تا ۵، چقدر فکر می‌کنید هوش مصنوعی در آینده‌ی شغلی و سازمانی شما تاثیرگذار خواهد بود؟ <span id="impact-value">3</span></label>
+      <input type="range" class="form-range" min="1" max="5" value="3" id="impact-slider">
+    </div>
 
-      <!-- نوع محتوا -->
-      <div class="mb-3">
-        <label class="form-label">ترجیح می‌دهید در طول دوره بیشتر با کدام نوع محتوا آشنا شوید؟</label>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> مثال‌های واقعی از ایران</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> کیس‌های بین‌المللی موفق</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> ابزارهای کاربردی و دم‌دستی</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> مفاهیم و ترندها</div>
-        <div class="form-check"><input class="form-check-input" type="checkbox"> همه موارد</div>
-      </div>
+    <!-- نوع محتوا -->
+    <div class="mb-3">
+      <label class="form-label">ترجیح می‌دهید در طول دوره بیشتر با کدام نوع محتوا آشنا شوید؟</label>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> مثال‌های واقعی از ایران</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> کیس‌های بین‌المللی موفق</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> ابزارهای کاربردی و دم‌دستی</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> مفاهیم و ترندها</div>
+      <div class="form-check"><input class="form-check-input" type="checkbox"> همه موارد</div>
+    </div>
 
-      <!-- دغدغه ذهنی -->
-      <div class="mb-3">
-        <label class="form-label">آیا سوال یا دغدغه‌ای در ذهن دارید که دوست دارید در کلاس پاسخ داده شود؟</label>
-        <textarea class="form-control" rows="3"></textarea>
-      </div>
+    <!-- دغدغه ذهنی -->
+    <div class="mb-3">
+      <label class="form-label">آیا سوال یا دغدغه‌ای در ذهن دارید که دوست دارید در کلاس پاسخ داده شود؟</label>
+      <textarea class="form-control" rows="3"></textarea>
+    </div>
 
-      <button type="submit" class="btn btn-primary w-100 mt-3">ثبت</button>
+    <button type="submit" class="btn btn-primary w-100 mt-3">ثبت</button>
 
-      <script>
-        document.getElementById("ai-form").addEventListener("submit", function (e) {
-          e.preventDefault();
+    <script>
+      const englishSlider = document.getElementById("english-slider");
+      const impactSlider = document.getElementById("impact-slider");
+      const englishValue = document.getElementById("english-value");
+      const impactValue = document.getElementById("impact-value");
 
-          const form = this;
+      englishSlider.addEventListener("input", () => {
+        englishValue.textContent = englishSlider.value;
+      });
 
-          const data = {
-            name: document.querySelector('input[type="text"]').value,
-            email: document.querySelector('input[type="email"]').value,
-            job_title: document.querySelectorAll('input[type="text"]')[1].value,
-            department: document.querySelector('select').value,
-            computer_usage: document.querySelectorAll('select')[1].value,
-            internet_usage: document.querySelectorAll('select')[2].value,
-            tools_used: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.parentElement.textContent.trim()),
-            repetitive_tasks: document.querySelectorAll('textarea')[0].value,
-            workshop_expectation: document.querySelectorAll('textarea')[1].value,
-            ai_definition: document.querySelectorAll('textarea')[2].value,
-            ai_challenges: document.querySelectorAll('textarea')[3].value,
-            ai_impact: document.querySelector('input[type="number"]').value,
-            preferred_content: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.parentElement.textContent.trim()),
-            questions: document.querySelectorAll('textarea')[4].value
-          };
+      impactSlider.addEventListener("input", () => {
+        impactValue.textContent = impactSlider.value;
+      });
 
-          fetch(form.action, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-          .then(res => res.text())
-          .then(res => {
-            alert("اطلاعات با موفقیت ثبت شد ✅");
-            document.getElementById("ai-form").reset();
-          })
-          .catch(err => {
-            alert("❌ خطا در ارسال اطلاعات");
-            console.error(err);
-          });
+      document.getElementById("ai-form").addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const form = this;
+
+        const data = {
+          name: document.querySelector('input[type="text"]').value,
+          email: document.querySelector('input[type="email"]').value,
+          job_title: document.querySelectorAll('input[type="text"]')[1].value,
+          department: document.querySelector('select').value,
+          computer_usage: document.querySelectorAll('select')[1].value,
+          internet_usage: document.querySelectorAll('select')[2].value,
+          tools_used: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.parentElement.textContent.trim()),
+          repetitive_tasks: document.querySelectorAll('textarea')[0].value,
+          workshop_expectation: document.querySelectorAll('textarea')[1].value,
+          ai_definition: document.querySelectorAll('textarea')[2].value,
+          ai_challenges: document.querySelectorAll('textarea')[3].value,
+          english_level: document.getElementById("english-slider").value,
+          ai_impact: document.getElementById("impact-slider").value,
+          preferred_content: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.parentElement.textContent.trim()),
+          questions: document.querySelectorAll('textarea')[4].value
+        };
+
+        fetch(form.action, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(res => res.text())
+        .then(res => {
+          alert("✅ اطلاعات با موفقیت ثبت شد");
+          form.reset();
+          englishValue.textContent = "3";
+          impactValue.textContent = "3";
+        })
+        .catch(err => {
+          alert("❌ خطا در ارسال اطلاعات");
+          console.error(err);
         });
-      </script>
+      });
+    </script>
 
-    </form>
-  </div>
+  </form>
+</div>
 </body>
 </html>
