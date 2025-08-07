@@ -14,7 +14,8 @@
 <body>
   <div class="container">
     <h4 class="text-center mb-4">فرم ثبت‌نام کارگاه هوش مصنوعی</h4>
-    <form id="ai-form">
+    <form id="ai-form" action="https://n8n.rymon-afzar.ir/webhook-test/e3905b74-63ec-4a66-bbbb-a9cca2864538" method="POST">
+
 
       <!-- پاسخ باز -->
       <div class="mb-3">
@@ -165,7 +166,7 @@
             questions: document.querySelectorAll('textarea')[4].value
           };
 
-          fetch('https://script.google.com/macros/s/AKfycbw8SCSp-GEGGR85-k6SKBg7LIcok7svjIUEFCOolrwIQz6wy0NnnkmjUsGJtFjRogsvYQ/exec', {
+          fetch(form.action, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
