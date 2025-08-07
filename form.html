@@ -135,6 +135,47 @@
       </div>
 
       <button type="submit" class="btn btn-primary w-100 mt-3">ثبت</button>
+
+      <script>
+        document.getElementById("ai-form").addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const data = {
+            name: document.querySelector('input[type="text"]').value,
+            email: document.querySelector('input[type="email"]').value,
+            job_title: document.querySelectorAll('input[type="text"]')[1].value,
+            department: document.querySelector('select').value,
+            computer_usage: document.querySelectorAll('select')[1].value,
+            internet_usage: document.querySelectorAll('select')[2].value,
+            tools_used: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.parentElement.textContent.trim()),
+            repetitive_tasks: document.querySelectorAll('textarea')[0].value,
+            workshop_expectation: document.querySelectorAll('textarea')[1].value,
+            ai_definition: document.querySelectorAll('textarea')[2].value,
+            ai_challenges: document.querySelectorAll('textarea')[3].value,
+            ai_impact: document.querySelector('input[type="number"]').value,
+            preferred_content: Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(i => i.parentElement.textContent.trim()),
+            questions: document.querySelectorAll('textarea')[4].value
+          };
+
+          fetch('https://script.google.com/macros/s/AKfycbxFX1k4aN-4Kx6L74aLoPCGLjlobtSWTBTyTSN2hV5g1gMop4vkcKA4KiwxtA2ZAoaW5w/exec', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          .then(res => res.text())
+          .then(res => {
+            alert("اطلاعات با موفقیت ثبت شد ✅");
+            document.getElementById("ai-form").reset();
+          })
+          .catch(err => {
+            alert("❌ خطا در ارسال اطلاعات");
+            console.error(err);
+          });
+        });
+      </script>
+
     </form>
   </div>
 </body>
