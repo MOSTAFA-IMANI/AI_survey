@@ -39,7 +39,7 @@
 <div class="container">
     <h4 class="text-center mb-4">فرم ثبت‌نام کارگاه هوش مصنوعی</h4>
 
-    <form id="ai-form" action="https://n8n.rymon-afzar.ir/webhook-test/e3905b74-63ec-4a66-bbbb-a9cca2864538" method="POST" novalidate>
+    <form id="ai-form" action="https://n8n.rymon-afzar.ir/webhook/e3905b74-63ec-4a66-bbbb-a9cca2864538" method="POST" novalidate>
 
         <!-- پاسخ باز -->
         <div class="mb-3">
@@ -62,7 +62,6 @@
             <label class="form-label">در کدام واحد سازمانی فعالیت می‌کنید؟</label>
             <select class="form-select" name="department" required>
                 <option selected disabled>انتخاب کنید</option>
-                <option>عملیات</option>
                 <option>تولید</option>
                 <option>تحقیق و توسعه</option>
                 <option>تضمین کیفیت</option>
@@ -179,11 +178,6 @@
             </div>
         </div>
 
-        <!-- پاسخ‌های باز -->
-        <div class="mb-3">
-            <label class="form-label">وقت‌گیرترین یا تکراری‌ترین کارهای شما در حال حاضر چیست؟</label>
-            <textarea class="form-control" name="repetitive_tasks" rows="3"></textarea>
-        </div>
 
         <div class="mb-3">
             <label class="form-label">دوست دارید از این کارگاه چه چیزی یاد بگیرید؟</label>
@@ -233,7 +227,7 @@
         <!-- Likert: تاثیر هوش مصنوعی -->
         <div class="mb-3">
             <div class="d-flex justify-content-between align-items-center">
-                <label class="form-label section-title mb-1">از ۱ تا ۵، تاثیر هوش مصنوعی بر آینده شغلی/سازمانی شما؟</label>
+                <label class="form-label section-title mb-1">از ۱ تا ۵ تاثیر هوش مصنوعی بر آینده شغلی/سازمانی شما؟</label>
                 <small class="text-muted">انتخاب شما: <span id="impact-value">۳</span>/۵</small>
             </div>
 
@@ -342,7 +336,7 @@
       })
       .then(res => res.text())
       .then(res => {
-        alert("✅ اطلاعات با موفقیت ثبت شد");
+        alert("  اطلاعات با موفقیت ثبت شد.✅ اطلاعاتی مخصوص شما برایتان ایمیل شد ");
         form.reset();
         // set defaults again (value 3 checked)
         document.getElementById('eng3').checked = true;
