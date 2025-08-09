@@ -9,12 +9,44 @@
   <style>
     body { font-family: 'Vazirmatn', sans-serif; background-color: #f9f9f9; }
     .container { max-width: 800px; margin-top: 30px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+
+    /* Custom slider styles */
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: 5px;
+      background: linear-gradient(90deg, #0d6efd 0%, #6f42c1 100%);
+      outline: none;
+    }
+
+    /* Chrome, Safari, Edge */
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #0d6efd;
+      cursor: pointer;
+    }
+
+    /* Firefox */
+    input[type="range"]::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #0d6efd;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 <div class="container">
   <h4 class="text-center mb-4">فرم ثبت‌نام کارگاه هوش مصنوعی</h4>
-  <form id="ai-form" action="https://n8n.rymon-afzar.ir/webhook-test/e3905b74-63ec-4a66-bbbb-a9cca2864538" method="POST">
+  <form id="ai-form" action="https://n8n.rymon-afzar.ir/webhook/e3905b74-63ec-4a66-bbbb-a9cca2864538" method="POST">
 
     <!-- پاسخ باز -->
     <div class="mb-3">
@@ -122,13 +154,13 @@
 
     <!-- سطح زبان انگلیسی -->
     <div class="mb-3">
-      <label class="form-label">سطح زبان انگلیسی چطور است؟ <span id="english-value">3</span></label>
+      <label class="form-label"> سطح زبان انگلیسی شما چطور است؟  <span id="english-value">3</span></label>
       <input type="range" class="form-range" min="1" max="5" value="3" id="english-slider">
     </div>
 
     <!-- تاثیر هوش مصنوعی -->
     <div class="mb-3">
-      <label class="form-label">از ۱ تا ۵، چقدر فکر می‌کنید هوش مصنوعی در آینده‌ی شغلی و سازمانی شما تاثیرگذار خواهد بود؟ <span id="impact-value">3</span></label>
+      <label class="form-label">از ۱ تا ۵ چقدر فکر می‌کنید هوش مصنوعی در آینده‌ی شغلی و سازمانی شما تاثیرگذار خواهد بود؟  <span id="impact-value">3</span></label>
       <input type="range" class="form-range" min="1" max="5" value="3" id="impact-slider">
     </div>
 
