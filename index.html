@@ -33,6 +33,38 @@
         .hint-row { display: flex; justify-content: space-between; margin-top: .35rem; }
         .hint-row span { white-space: nowrap; }
         .section-title { font-weight: 700; font-size: 1.05rem; }
+
+        /* Loading overlay styles */
+        #loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1.2rem;
+            color: #333;
+            display: none;
+        }
+        .spinner {
+            border: 4px solid #e5e7eb;
+            border-top: 4px solid #0d6efd;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -104,95 +136,30 @@
         <!-- چندگزینه‌ای: ابزارها -->
         <div class="mb-3">
             <label class="form-label">با کدام‌یک از ابزارهای زیر کار کرده‌اید؟</label>
-
             <div class="row row-cols-1 row-cols-sm-2 g-2">
-                <!-- put value attributes so we send clean text -->
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="ChatGPT" id="t1">
-                    <label class="form-check-label" for="t1">ChatGPT</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="Google Sheets" id="t2">
-                    <label class="form-check-label" for="t2">Google Sheets</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="Gemini" id="t3">
-                    <label class="form-check-label" for="t3">Gemini</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="Google Calendar" id="t4">
-                    <label class="form-check-label" for="t4">Google Calendar</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="Copilot" id="t5">
-                    <label class="form-check-label" for="t5">Copilot</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="Notion AI" id="t6">
-                    <label class="form-check-label" for="t6">Notion AI</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="Bing AI" id="t7">
-                    <label class="form-check-label" for="t7">Bing AI</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="n8n" id="t8">
-                    <label class="form-check-label" for="t8">n8n</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="Claude" id="t9">
-                    <label class="form-check-label" for="t9">Claude</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="Grammarly" id="t10">
-                    <label class="form-check-label" for="t10">Grammarly</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="NotebookLM" id="t11">
-                    <label class="form-check-label" for="t11">NotebookLM</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="Midjourney" id="t12">
-                    <label class="form-check-label" for="t12">Midjourney</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="Whisper" id="t13">
-                    <label class="form-check-label" for="t13">Whisper</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="DALL·E" id="t14">
-                    <label class="form-check-label" for="t14">DALL·E</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="Deepseek" id="t15">
-                    <label class="form-check-label" for="t15">Deepseek</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="RunwayML" id="t16">
-                    <label class="form-check-label" for="t16">RunwayML</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="tools" value="هیچ‌کدام" id="t17">
-                    <label class="form-check-label" for="t17">هیچ‌کدام</label>
-                </div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="ChatGPT" id="t1"><label class="form-check-label" for="t1">ChatGPT</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="Google Sheets" id="t2"><label class="form-check-label" for="t2">Google Sheets</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="Gemini" id="t3"><label class="form-check-label" for="t3">Gemini</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="Google Calendar" id="t4"><label class="form-check-label" for="t4">Google Calendar</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="Copilot" id="t5"><label class="form-check-label" for="t5">Copilot</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="Notion AI" id="t6"><label class="form-check-label" for="t6">Notion AI</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="Bing AI" id="t7"><label class="form-check-label" for="t7">Bing AI</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="n8n" id="t8"><label class="form-check-label" for="t8">n8n</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="Claude" id="t9"><label class="form-check-label" for="t9">Claude</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="Grammarly" id="t10"><label class="form-check-label" for="t10">Grammarly</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="NotebookLM" id="t11"><label class="form-check-label" for="t11">NotebookLM</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="Midjourney" id="t12"><label class="form-check-label" for="t12">Midjourney</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="Whisper" id="t13"><label class="form-check-label" for="t13">Whisper</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="DALL·E" id="t14"><label class="form-check-label" for="t14">DALL·E</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="Deepseek" id="t15"><label class="form-check-label" for="t15">Deepseek</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="RunwayML" id="t16"><label class="form-check-label" for="t16">RunwayML</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="tools" value="هیچ‌کدام" id="t17"><label class="form-check-label" for="t17">هیچ‌کدام</label></div>
             </div>
         </div>
 
-
-        <div class="mb-3">
-            <label class="form-label">دوست دارید از این کارگاه چه چیزی یاد بگیرید؟</label>
-            <textarea class="form-control" name="workshop_expectation" rows="3"></textarea>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">به نظر شما هوش مصنوعی چیست؟</label>
-            <textarea class="form-control" name="ai_definition" rows="3"></textarea>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">در واحد یا حوزه کاری شما چه مسئله یا چالشی وجود دارد که تصور می‌کنید هوش مصنوعی می‌تواند به حل آن کمک کند؟</label>
-            <textarea class="form-control" name="ai_challenges" rows="3"></textarea>
-        </div>
+        <div class="mb-3"><label class="form-label">دوست دارید از این کارگاه چه چیزی یاد بگیرید؟</label><textarea class="form-control" name="workshop_expectation" rows="3"></textarea></div>
+        <div class="mb-3"><label class="form-label">به نظر شما هوش مصنوعی چیست؟</label><textarea class="form-control" name="ai_definition" rows="3"></textarea></div>
+        <div class="mb-3"><label class="form-label">در واحد یا حوزه کاری شما چه مسئله یا چالشی وجود دارد که تصور می‌کنید هوش مصنوعی می‌تواند به حل آن کمک کند؟</label><textarea class="form-control" name="ai_challenges" rows="3"></textarea></div>
 
         <!-- Likert: سطح زبان انگلیسی -->
         <div class="mb-3">
@@ -200,28 +167,14 @@
                 <label class="form-label section-title mb-1">سطح زبان انگلیسی چطور است؟</label>
                 <small class="text-muted">انتخاب شما: <span id="english-value">۳</span>/۵</small>
             </div>
-
-            <div class="btn-group w-100 likert-group" role="group" aria-label="English level">
-                <!-- Use Bootstrap btn-check pattern -->
-                <input type="radio" class="btn-check" name="english_level" id="eng1" value="1" autocomplete="off">
-                <label class="btn flex-fill me-2" for="eng1">۱<br><small>خیلی ضعیف 😓</small></label>
-
-                <input type="radio" class="btn-check" name="english_level" id="eng2" value="2" autocomplete="off">
-                <label class="btn flex-fill me-2" for="eng2">۲<br><small>ضعیف 😕</small></label>
-
-                <input type="radio" class="btn-check" name="english_level" id="eng3" value="3" autocomplete="off" checked>
-                <label class="btn flex-fill me-2" for="eng3">۳<br><small>متوسط 🙂</small></label>
-
-                <input type="radio" class="btn-check" name="english_level" id="eng4" value="4" autocomplete="off">
-                <label class="btn flex-fill me-2" for="eng4">۴<br><small>خوب 😃</small></label>
-
-                <input type="radio" class="btn-check" name="english_level" id="eng5" value="5" autocomplete="off">
-                <label class="btn flex-fill" for="eng5">۵<br><small>عالی 🏆</small></label>
+            <div class="btn-group w-100 likert-group" role="group">
+                <input type="radio" class="btn-check" name="english_level" id="eng1" value="1"><label class="btn flex-fill me-2" for="eng1">۱<br><small>خیلی ضعیف 😓</small></label>
+                <input type="radio" class="btn-check" name="english_level" id="eng2" value="2"><label class="btn flex-fill me-2" for="eng2">۲<br><small>ضعیف 😕</small></label>
+                <input type="radio" class="btn-check" name="english_level" id="eng3" value="3" checked><label class="btn flex-fill me-2" for="eng3">۳<br><small>متوسط 🙂</small></label>
+                <input type="radio" class="btn-check" name="english_level" id="eng4" value="4"><label class="btn flex-fill me-2" for="eng4">۴<br><small>خوب 😃</small></label>
+                <input type="radio" class="btn-check" name="english_level" id="eng5" value="5"><label class="btn flex-fill" for="eng5">۵<br><small>عالی 🏆</small></label>
             </div>
-
-            <div class="scale-hints hint-row">
-                <span>خیلی ضعیف</span><span>عالی</span>
-            </div>
+            <div class="scale-hints hint-row"><span>خیلی ضعیف</span><span>عالی</span></div>
         </div>
 
         <!-- Likert: تاثیر هوش مصنوعی -->
@@ -230,54 +183,25 @@
                 <label class="form-label section-title mb-1">از ۱ تا ۵ تاثیر هوش مصنوعی بر آینده شغلی/سازمانی شما؟</label>
                 <small class="text-muted">انتخاب شما: <span id="impact-value">۳</span>/۵</small>
             </div>
-
-            <div class="btn-group w-100 likert-group" role="group" aria-label="AI impact">
-                <input type="radio" class="btn-check" name="ai_impact" id="imp1" value="1" autocomplete="off">
-                <label class="btn flex-fill me-2" for="imp1">۱<br><small>خیلی کم</small></label>
-
-                <input type="radio" class="btn-check" name="ai_impact" id="imp2" value="2" autocomplete="off">
-                <label class="btn flex-fill me-2" for="imp2">۲<br><small>کم</small></label>
-
-                <input type="radio" class="btn-check" name="ai_impact" id="imp3" value="3" autocomplete="off" checked>
-                <label class="btn flex-fill me-2" for="imp3">۳<br><small>متوسط</small></label>
-
-                <input type="radio" class="btn-check" name="ai_impact" id="imp4" value="4" autocomplete="off">
-                <label class="btn flex-fill me-2" for="imp4">۴<br><small>زیاد</small></label>
-
-                <input type="radio" class="btn-check" name="ai_impact" id="imp5" value="5" autocomplete="off">
-                <label class="btn flex-fill" for="imp5">۵<br><small>خیلی زیاد ⚡</small></label>
+            <div class="btn-group w-100 likert-group" role="group">
+                <input type="radio" class="btn-check" name="ai_impact" id="imp1" value="1"><label class="btn flex-fill me-2" for="imp1">۱<br><small>خیلی کم</small></label>
+                <input type="radio" class="btn-check" name="ai_impact" id="imp2" value="2"><label class="btn flex-fill me-2" for="imp2">۲<br><small>کم</small></label>
+                <input type="radio" class="btn-check" name="ai_impact" id="imp3" value="3" checked><label class="btn flex-fill me-2" for="imp3">۳<br><small>متوسط</small></label>
+                <input type="radio" class="btn-check" name="ai_impact" id="imp4" value="4"><label class="btn flex-fill me-2" for="imp4">۴<br><small>زیاد</small></label>
+                <input type="radio" class="btn-check" name="ai_impact" id="imp5" value="5"><label class="btn flex-fill" for="imp5">۵<br><small>خیلی زیاد ⚡</small></label>
             </div>
-
-            <div class="scale-hints hint-row">
-                <span>خیلی کم</span><span>خیلی زیاد</span>
-            </div>
+            <div class="scale-hints hint-row"><span>خیلی کم</span><span>خیلی زیاد</span></div>
         </div>
 
         <!-- نوع محتوا -->
         <div class="mb-3">
             <label class="form-label">ترجیح می‌دهید در طول دوره بیشتر با کدام نوع محتوا آشنا شوید؟</label>
-
             <div class="row row-cols-1 row-cols-sm-2 g-2">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="preferred_content" value="مثال‌های واقعی از ایران" id="pc1">
-                    <label class="form-check-label" for="pc1">مثال‌های واقعی از ایران</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="preferred_content" value="کیس‌های بین‌المللی موفق" id="pc2">
-                    <label class="form-check-label" for="pc2">کیس‌های بین‌المللی موفق</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="preferred_content" value="ابزارهای کاربردی و دم‌دستی" id="pc3">
-                    <label class="form-check-label" for="pc3">ابزارهای کاربردی و دم‌دستی</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="preferred_content" value="مفاهیم و ترندها" id="pc4">
-                    <label class="form-check-label" for="pc4">مفاهیم و ترندها</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="preferred_content" value="همه موارد" id="pc5">
-                    <label class="form-check-label" for="pc5">همه موارد</label>
-                </div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="preferred_content" value="مثال‌های واقعی از ایران" id="pc1"><label class="form-check-label" for="pc1">مثال‌های واقعی از ایران</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="preferred_content" value="کیس‌های بین‌المللی موفق" id="pc2"><label class="form-check-label" for="pc2">کیس‌های بین‌المللی موفق</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="preferred_content" value="ابزارهای کاربردی و دم‌دستی" id="pc3"><label class="form-check-label" for="pc3">ابزارهای کاربردی و دم‌دستی</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="preferred_content" value="مفاهیم و ترندها" id="pc4"><label class="form-check-label" for="pc4">مفاهیم و ترندها</label></div>
+                <div class="form-check"><input class="form-check-input" type="checkbox" name="preferred_content" value="همه موارد" id="pc5"><label class="form-check-label" for="pc5">همه موارد</label></div>
             </div>
         </div>
 
@@ -291,62 +215,71 @@
     </form>
 </div>
 
+<!-- Loading overlay -->
+<div id="loading-overlay">
+    <div class="spinner"></div>
+    <div>در حال تحلیل داده‌های شما هستیم...</div>
+</div>
+
 <script>
-    // Update the tiny status text for both Likert groups
-    function syncLikertLabels() {
-      const engChecked = document.querySelector('input[name="english_level"]:checked');
-      const impChecked = document.querySelector('input[name="ai_impact"]:checked');
-      if (engChecked) document.getElementById('english-value').textContent = engChecked.value;
-      if (impChecked) document.getElementById('impact-value').textContent = impChecked.value;
+    function showLoading() {
+        document.getElementById("loading-overlay").style.display = "flex";
     }
-    document.querySelectorAll('input[name="english_level"], input[name="ai_impact"]').forEach(el => {
-      el.addEventListener('change', syncLikertLabels);
-    });
-    syncLikertLabels(); // initial
+    function hideLoading() {
+        document.getElementById("loading-overlay").style.display = "none";
+    }
 
     document.getElementById("ai-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const form = this;
+        e.preventDefault();
+        const form = this;
 
-      const toolsSelected = Array.from(form.querySelectorAll('input[name="tools"]:checked')).map(el => el.value);
-      const preferredSelected = Array.from(form.querySelectorAll('input[name="preferred_content"]:checked')).map(el => el.value);
+        const toolsSelected = Array.from(form.querySelectorAll('input[name="tools"]:checked')).map(el => el.value);
+        const preferredSelected = Array.from(form.querySelectorAll('input[name="preferred_content"]:checked')).map(el => el.value);
 
-      const data = {
-        name: form.querySelector('[name="name"]').value,
-        email: form.querySelector('[name="email"]').value,
-        job_title: form.querySelector('[name="job_title"]').value,
-        department: form.querySelector('[name="department"]').value,
-        computer_usage: form.querySelector('[name="computer_usage"]').value,
-        internet_usage: form.querySelector('[name="internet_usage"]').value,
-        tools_used: toolsSelected,
-        repetitive_tasks: form.querySelector('[name="repetitive_tasks"]').value,
-        workshop_expectation: form.querySelector('[name="workshop_expectation"]').value,
-        ai_definition: form.querySelector('[name="ai_definition"]').value,
-        ai_challenges: form.querySelector('[name="ai_challenges"]').value,
-        english_level: form.querySelector('input[name="english_level"]:checked')?.value || "",
-        ai_impact: form.querySelector('input[name="ai_impact"]:checked')?.value || "",
-        preferred_content: preferredSelected,
-        questions: form.querySelector('[name="questions"]').value
-      };
+        const data = {
+            name: form.querySelector('[name="name"]').value,
+            email: form.querySelector('[name="email"]').value,
+            job_title: form.querySelector('[name="job_title"]').value,
+            department: form.querySelector('[name="department"]').value,
+            computer_usage: form.querySelector('[name="computer_usage"]').value,
+            internet_usage: form.querySelector('[name="internet_usage"]').value,
+            tools_used: toolsSelected,
+            workshop_expectation: form.querySelector('[name="workshop_expectation"]').value,
+            ai_definition: form.querySelector('[name="ai_definition"]').value,
+            ai_challenges: form.querySelector('[name="ai_challenges"]').value,
+            english_level: form.querySelector('input[name="english_level"]:checked')?.value || "",
+            ai_impact: form.querySelector('input[name="ai_impact"]:checked')?.value || "",
+            preferred_content: preferredSelected,
+            questions: form.querySelector('[name="questions"]').value
+        };
 
-      fetch(form.action, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: { 'Content-Type': 'application/json' }
-      })
-      .then(res => res.text())
-      .then(res => {
-        alert("  اطلاعات با موفقیت ثبت شد.✅ اطلاعاتی مخصوص شما برایتان ایمیل شد ");
-        form.reset();
-        // set defaults again (value 3 checked)
-        document.getElementById('eng3').checked = true;
-        document.getElementById('imp3').checked = true;
-        syncLikertLabels();
-      })
-      .catch(err => {
-        alert("❌ خطا در ارسال اطلاعات");
-        console.error(err);
-      });
+        showLoading(); // show loading before sending
+
+        const startTime = Date.now();
+
+        fetch(form.action, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(res => res.text())
+        .then(res => {
+            const elapsed = Date.now() - startTime;
+            const delay = Math.max(2000 - elapsed, 0); // ensure at least 2 seconds
+            setTimeout(() => {
+                hideLoading();
+                alert("اطلاعات با موفقیت ثبت شد ✅\nایمیل اختصاصی برای شما ارسال شد 📧");
+                form.reset();
+                document.getElementById('eng3').checked = true;
+                document.getElementById('imp3').checked = true;
+                syncLikertLabels();
+            }, delay);
+        })
+        .catch(err => {
+            hideLoading();
+            alert("❌ خطا در ارسال اطلاعات");
+            console.error(err);
+        });
     });
 </script>
 </body>
