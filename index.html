@@ -71,7 +71,7 @@
 <div class="container">
     <h4 class="text-center mb-4">فرم ثبت‌نام کارگاه هوش مصنوعی</h4>
 
-    <form id="ai-form" action="https://n8n.rymon-afzar.ir/webhook/e3905b74-63ec-4a66-bbbb-a9cca2864538" method="POST" novalidate>
+    <form id="ai-form" action="https://n8n.rymon-afzar.ir/webhook-test/e3905b74-63ec-4a66-bbbb-a9cca2864538" method="POST" novalidate>
 
         <!-- پاسخ باز -->
         <div class="mb-3">
@@ -80,7 +80,7 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">ایمیل سازمانی یا شخصی شما چیست؟</label>
+            <label class="form-label">ایمیل خود را وارد کنید</label>
             <input type="email" name="email" class="form-control" required />
         </div>
 
@@ -89,24 +89,35 @@
             <input type="text" name="job_title" class="form-control" />
         </div>
 
+        <!-- تک‌گزینه‌ای: جنسیت -->
+        <div class="mb-3">
+            <label class="form-label">جنسیت</label>
+            <div class="d-flex gap-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="gender_male" value="مرد" required>
+                    <label class="form-check-label" for="gender_male">مرد</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="gender_female" value="زن" required>
+                    <label class="form-check-label" for="gender_female">زن</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3"><label class="form-label">در دو جمله مهم‌ترین ویژگی‌های شخصیتی خود را بگویید</label><textarea class="form-control" name="self_description" rows="3" required></textarea></div>
+
         <!-- تک‌گزینه‌ای: واحد سازمانی -->
         <div class="mb-3">
-            <label class="form-label">در کدام واحد سازمانی فعالیت می‌کنید؟</label>
+            <label class="form-label">رشته تحصیلی</label>
             <select class="form-select" name="department" required>
                 <option selected disabled>انتخاب کنید</option>
-                <option>تولید</option>
-                <option>تحقیق و توسعه</option>
-                <option>تضمین کیفیت</option>
-                <option>ایمنی و بهداشت</option>
-                <option>زنجیره تأمین</option>
-                <option>مارکتینک</option>
-                <option>فروش</option>
-                <option>سیستم ها و روش ها</option>
-                <option>آی تی</option>
-                <option>توسعه کسب و کار</option>
-                <option>مالی</option>
-                <option>حسابرسی</option>
-                <option>حقوقی</option>
+                <option>فناوری و کامپیوتر</option>
+                <option>مهندسی (غیر از کامپیوتر)</option>
+                <option>علوم داده و آمار</option>
+                <option>مدیریت و علوم انسانی</option>
+                <option>اقتصاد و حسابداری</option>
+                <option>پزشکی و سلامت</option>
+                <option>هنر</option>
                 <option>سایر</option>
             </select>
         </div>
@@ -157,9 +168,6 @@
             </div>
         </div>
 
-        <div class="mb-3"><label class="form-label">دوست دارید از این کارگاه چه چیزی یاد بگیرید؟</label><textarea class="form-control" name="workshop_expectation" rows="3"></textarea></div>
-        <div class="mb-3"><label class="form-label">به نظر شما هوش مصنوعی چیست؟</label><textarea class="form-control" name="ai_definition" rows="3"></textarea></div>
-        <div class="mb-3"><label class="form-label">در واحد یا حوزه کاری شما چه مسئله یا چالشی وجود دارد که تصور می‌کنید هوش مصنوعی می‌تواند به حل آن کمک کند؟</label><textarea class="form-control" name="ai_challenges" rows="3"></textarea></div>
 
         <!-- Likert: سطح زبان انگلیسی -->
         <div class="mb-3">
@@ -221,6 +229,7 @@
     <div>در حال تحلیل داده‌های شما هستیم...</div>
 </div>
 
+</body>
 <script>
     function showLoading() {
         document.getElementById("loading-overlay").style.display = "flex";
@@ -233,6 +242,11 @@
         e.preventDefault();
         const form = this;
 
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
         const toolsSelected = Array.from(form.querySelectorAll('input[name="tools"]:checked')).map(el => el.value);
         const preferredSelected = Array.from(form.querySelectorAll('input[name="preferred_content"]:checked')).map(el => el.value);
 
@@ -244,9 +258,8 @@
             computer_usage: form.querySelector('[name="computer_usage"]').value,
             internet_usage: form.querySelector('[name="internet_usage"]').value,
             tools_used: toolsSelected,
-            workshop_expectation: form.querySelector('[name="workshop_expectation"]').value,
-            ai_definition: form.querySelector('[name="ai_definition"]').value,
-            ai_challenges: form.querySelector('[name="ai_challenges"]').value,
+            self_description: form.querySelector('[name="self_description"]').value,
+            gender: form.querySelector('input[name="gender"]:checked')?.value || "",
             english_level: form.querySelector('input[name="english_level"]:checked')?.value || "",
             ai_impact: form.querySelector('input[name="ai_impact"]:checked')?.value || "",
             preferred_content: preferredSelected,
@@ -277,10 +290,9 @@
         })
         .catch(err => {
             hideLoading();
-            alert("❌ خطا در ارسال اطلاعات");
+            alert(err);
             console.error(err);
         });
     });
 </script>
-</body>
 </html>
